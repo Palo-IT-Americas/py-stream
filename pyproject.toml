@@ -1,0 +1,38 @@
+[tool.poetry]
+name = "py-stream"
+version = "0.1.0"
+description = ""
+authors = ["Miguel Galindo Rodriguez <mgalindo@palo-it.com>"]
+readme = "README.md"
+packages = [{include = "py_stream", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pydantic = "^2.7.0"
+google-cloud-pubsub = "^2.21.1"
+
+[tool.poetry.group.test.dependencies]
+black = "^24.4.0"
+pytest = "^8.1.1"
+pytest-cov = "^5.0.0"
+pytest-asyncio = "^0.23.6"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+testpaths = "tests"
+filterwarnings = ["error", "ignore:The 'app' shortcut is now deprecated"]
+log_cli = false
+log_cli_level = "INFO"
+log_cli_format = "%(asctime)s [%(levelname)8s] %(message)s (%(filename)s:%(lineno)s)"
+log_cli_date_format = "%Y-%m-%d %H:%M:%S"
+
+[tool.coverage.run]
+branch = true
+source = ['src']
+
+[tool.coverage.report]
+skip_empty = true
+exclude_also = ["def __repr__", "raise AssertionError", "raise NotImplementedError", "@(abc\\.)?abstractmethod", "pass"]
