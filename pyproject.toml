@@ -1,10 +1,10 @@
 [tool.poetry]
 name = "py-stream"
-version = "2.0.0"
+version = "3.0.0"
 description = ""
 authors = ["Miguel Galindo Rodriguez <mgalindo@palo-it.com>"]
 readme = "README.md"
-packages = [{include = "py_stream", from = "src"}]
+packages = [{include = "pit", from = "src"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"

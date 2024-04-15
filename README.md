@@ -20,8 +20,8 @@ poetry install
 2. Import the necessary classes from the library:
 
 ```python
-from pit.lib.py_stream import EventNotification
-from pit.lib.py_stream.settings import EventConfig
+from pit.py_stream.event_notification import EventNotification
+from pit.py_stream.settings import EventConfig
 ```
 3. Create an instance of `EventConfig` with your topic bindings:
 ```python
@@ -40,8 +40,8 @@ To use this library, you need to create an instance of `EventNotification` and `
 Here is an example of how to publish an event:
 
 ```python
-from pit.lib.py_stream import EventPubSubNotification
-from pit.lib.py_stream.settings import EventConfig
+from pit.py_stream.event_notification import EventPubSubNotification
+from pit.py_stream.settings import EventConfig
 from google.cloud import pubsub_v1
 
 # Create an instance of EventConfig with your topic bindings
@@ -59,8 +59,8 @@ Here is an example of how to consume an event:
 ```python
 from google.cloud import pubsub_v1
 
-from pit.lib.py_stream.event_handler import EventRouter, PubSubEventHandler
-from pit.lib.py_stream.settings import EventConfig
+from pit.py_stream.event_handler import EventRouter, PubSubEventHandler
+from pit.py_stream.settings import EventConfig
 
 # Create an instance of EventConfig with your topic bindings
 event_config = EventConfig(bindings={"my-subscription-alias": "real-subscription-name"})
