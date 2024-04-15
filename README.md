@@ -18,9 +18,10 @@ A Python library that provides a common interface to different message brokers s
 poetry install
 ```
 2. Import the necessary classes from the library:
+
 ```python
-from py_stream.event_notification import EventNotification
-from py_stream.settings import EventConfig
+from pit.lib.py_stream import EventNotification
+from pit.lib.py_stream.settings import EventConfig
 ```
 3. Create an instance of `EventConfig` with your topic bindings:
 ```python
@@ -39,8 +40,8 @@ To use this library, you need to create an instance of `EventNotification` and `
 Here is an example of how to publish an event:
 
 ```python
-from py_stream.event_notification import EventPubSubNotification
-from py_stream.settings import EventConfig
+from pit.lib.py_stream import EventPubSubNotification
+from pit.lib.py_stream.settings import EventConfig
 from google.cloud import pubsub_v1
 
 # Create an instance of EventConfig with your topic bindings
@@ -50,7 +51,7 @@ event_config = EventConfig(bindings={"my-topic-alias": "real.topic.name"})
 event_notification = EventPubSubNotification(pubsub_v1.PublisherClient(), "gcp-project-name", event_config)
 
 # Now you can use event_notification.notify() to publish messages to your topic
-event_notification.notify("my-topic", { "name":"Dave","last_name":"Jhones" })
+event_notification.notify("my-topic", {"name": "Dave", "last_name": "Jhones"})
 ```
 
 Here is an example of how to consume an event:
@@ -58,8 +59,8 @@ Here is an example of how to consume an event:
 ```python
 from google.cloud import pubsub_v1
 
-from py_stream.event_handler import EventRouter, PubSubEventHandler
-from py_stream.settings import EventConfig
+from pit.lib.py_stream.event_handler import EventRouter, PubSubEventHandler
+from pit.lib.py_stream.settings import EventConfig
 
 # Create an instance of EventConfig with your topic bindings
 event_config = EventConfig(bindings={"my-subscription-alias": "real-subscription-name"})
@@ -72,12 +73,12 @@ def my_function(data):
     print(data)
 
 
-event_handler:PubSubEventHandler = PubSubEventHandler(
-    pubsub_v1.SubscriberClient(), 
+event_handler: PubSubEventHandler = PubSubEventHandler(
+    pubsub_v1.SubscriberClient(),
     pubsub_v1.PublisherClient(),
-    "gcp-project-name", 
+    "gcp-project-name",
     event_config)
-   
+
 event_handler.add_router(event_router)
 # Start the event router
 event_handler.start_listening()

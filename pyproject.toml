@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "py-stream"
-version = "0.1.0"
+version = "2.0.0"
 description = ""
 authors = ["Miguel Galindo Rodriguez <mgalindo@palo-it.com>"]
 readme = "README.md"
